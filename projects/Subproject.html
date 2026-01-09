@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            padding: 50px;
+            animation: fadeIn 0.6s ease-in;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #00d4ff;
+            padding-bottom: 30px;
+        }
+
+        .project-name {
+            font-size: 3em;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-description {
+            font-size: 1.2em;
+            color: #b8b8b8;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .tools-section {
+            margin-bottom: 40px;
+        }
+
+        .tools-title {
+            font-size: 2em;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tool-badge {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 500;
+            border: 1px solid #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tool-badge:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        }
+
+        .maps-section {
+            margin-bottom: 50px;
+        }
+
+        .maps-title {
+            font-size: 2em;
+            color: #7b2ff7;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(123, 47, 247, 0.5);
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+            align-items: start; /* keep titles aligned */
+        }
+
+        .map-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center; /* center children so content width matches map-frame */
+        }
+
+        /* new wrapper to let text size follow the map frame width */
+        .map-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* make titles and descriptions match the inner width and wrap nicely */
+        .map-title, .map-description {
+            width: 100%;
+            max-width: 100%;
+            text-align: center; /* center to match map preview */
+            padding: 0 6px;
+        }
+
+        .map-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            padding: 8px;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            /* keep default safe sizing so layout doesn't jump */
+            width: 100%;
+            max-width: 720px;
+            max-height: 420px;
+            aspect-ratio: 297/210; /* default to A4 landscape */
+        }
+
+        /* orientation-specific frame sizing */
+        .map-frame.orientation-landscape {
+            aspect-ratio: 297/210; /* A4 landscape */
+            max-width: 720px;
+            max-height: 420px;
+        }
+        .map-frame.orientation-portrait {
+            aspect-ratio: 210/297; /* A4 portrait */
+            max-width: 420px;
+            max-height: 720px;
+        }
+        .map-frame.orientation-square {
+            aspect-ratio: 1/1;
+            max-width: 520px;
+            max-height: 520px;
+        }
+
+        /* ensure image fits the frame appropriately depending on orientation */
+        .map-frame.orientation-landscape .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .map-frame.orientation-portrait .map-image {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+        .map-frame.orientation-square .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .map-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .map-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+        }
+
+        .map-title {
+            font-size: 1.3em;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .map-description {
+            color: #b8b8b8;
+            font-size: 0.95em;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 6px 25px rgba(255, 0, 110, 0.5);
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .next-button:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Glow effect */
+        .project-header::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .project-name {
+                font-size: 2em;
+            }
+
+            .project-description {
+                font-size: 1em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-button {
+                width: 100%;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #7b2ff7 0%, #00d4ff 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="project-header">
+            <h1 class="project-name">Comparative Analysis of Public Service Accessibility in Two Major Cities of Sri Lanka: A GIS-Based Network Analysis Approach</h1>
+        </div>
+
+        <div class="project-description">
+            <p>
+                Fast-increasing growth in urbanization raises important issues for planners and 
+governments to achieve in the aspect of equitably distributing public services and 
+providing people access to the same. GIS can assist in accessing and improving the 
+state of accessibility to several indispensable public services in Gampaha and 
+Kurunegala Municipalities of Sri Lanka. Therefore, the main objective of this study is 
+to give a complete idea about the accessibility of public services in the Gampaha and 
+Kurunegala urban areas by comparatively analyzing the accessibility of public services 
+in the Gampaha and Kurunegala areas with the help of network analysis, and thereafter 
+recommending the ways to maximize the access to the services. Thus, service area 
+analysis was an efficient geoinformatics-based network analysis technique to assess 
+accessibility to public services. The literature survey indicated the identification of 
+access zones for service area analysis, thus dividing into three zones. They are 0m
+500m - Nearest Urban Service Area, 500m-1000m - Medium Nearest Urban Service 
+Area, and 1000m - 1500m - Lowest Urban Service Area. In all municipalities, five 
+important public services were analyzed. They are hospitals, schools, banks, 
+supermarkets, and filling stations. The accessibility zones for each kind of service were 
+mapped individually in every municipality, while maps of services outside the zones 
+were also developed. The significant differences of public services were striking 
+between Kurunegala and Gampaha. In both cities, number of larger residents fall into 
+the limits of access 500m, 1000m, and 1500m. On the other hand, the distribution of 
+some public services was not adequate to reach all their residents. Network analysis 
+with the incorporation of GIS has been useful in the identification and elimination of 
+inequalities within public service provision. The study will recommend the strategic 
+placement of new public service facilities and give a more even distribution of existing 
+service stations for the realization of better access to the underserved areas of Gampaha 
+and Kurunegala.
+            </p>
+        </div>
+
+        <div class="tools-section">
+            <h2 class="tools-title">Tools & Technologies</h2>
+            <div class="tools-list">
+                <span class="tool-badge">ArcGIS Pro</span>
+                <span class="tool-badge">QGIS</span>
+                <span class="tool-badge">OSM Map</span>
+                <span class="tool-badge">Google Earth Engine</span>
+                <span class="tool-badge">Google Map</span>
+                <span class="tool-badge">Excel</span>
+            </div>
+        </div>
+
+        <div class="maps-section">
+            <h2 class="maps-title">Maps gallery</h2>
+            <div class="map-grid">
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Public_Service_map_in_Gampaha.jpg" alt="Air quality map — hotspots and trends">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Gampaha_road_categories.jpg" alt="Green spaces coverage and accessibility">
+                        </div>
+                       
+                    </div>
+                </div>
+                
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Service_Area_Map_of_Bank.jpg" alt="Traffic flow analysis — congestion hotspots">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Service_Area_Map_of_Filling_Station.jpg" alt="Public transport network — routes and connectivity">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Service_Area_Map_of_Hospital_in_Gampaha_Municiple_Council.jpg" alt="Solar potential zones — rooftop suitability">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Service Area Map of Schools in Gampaha Municiple Council.jpg" alt="Walkability scores — pedestrian friendliness">
+                        </div>
+                        
+                    </div>
+                </div>    
+                 <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images/Service Area Map of Supermarket in Gampaha Municiple Council.jpg" alt="Walkability scores — pedestrian friendliness">
+                        </div>
+                        
+                    </div> 
+                    </div>  
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/service map of kurunagala.jpg" alt="Air quality map — hotspots and trends">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Road categary map of kurunagala.jpg" alt="Green spaces coverage and accessibility">
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Service Area Map of Bank.jpg" alt="Traffic flow analysis — congestion hotspots">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Kurunegala Filling Station Service Area.jpg" alt="Public transport network — routes and connectivity">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Service Area Map of Hospitel.jpg" alt="Solar potential zones — rooftop suitability">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Service Area Map of School.jpg" alt="Walkability scores — pedestrian friendliness">
+                        </div>
+                        
+                    </div>
+                </div>    
+                 <div class="map-card">
+                    <div class="map-inner">
+                        <div class="map-frame">
+                            <img class="map-image" src="../images1/Service Area Map of Supermarket.jpg" alt="Walkability scores — pedestrian friendliness">
+                        </div>
+                        
+                    </div>
+                    </div>     
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button back-button" onclick="goBack()">← Back to Projects</button>
+            <button class="nav-button next-button" onclick="nextProject()">Next Project →</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            // Replace with your actual previous page URL
+            window.location.href = '#Spatial Analysis Projects';
+        }
+
+        function nextProject() {
+            // Replace with your actual next project URL
+            window.location.href = 'project2.html';
+        }
+
+        // Add click functionality to map cards for future expansion
+        document.querySelectorAll('.map-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const img = this.querySelector('.map-image');
+                if (img && img.src) {
+                    window.open(img.src, '_blank'); // quick full-size preview
+                    return;
+                }
+                console.log('Map clicked:', this.querySelector('.map-title').textContent);
+            });
+        });
+
+        /* apply orientation class to each map-frame based on image natural size */
+        document.addEventListener('DOMContentLoaded', function () {
+            function setOrientation(img) {
+                const frame = img.closest('.map-frame');
+                if (!frame) return;
+                const w = img.naturalWidth || img.width;
+                const h = img.naturalHeight || img.height;
+                if (!w || !h) {
+                    // fallback default
+                    frame.classList.add('orientation-landscape');
+                    return;
+                }
+                const ratio = w / h;
+                if (ratio >= 1.2) {
+                    frame.classList.add('orientation-landscape');
+                } else if (ratio <= 0.8) {
+                    frame.classList.add('orientation-portrait');
+                } else {
+                    frame.classList.add('orientation-square');
+                }
+            }
+
+            document.querySelectorAll('.map-image').forEach(img => {
+                if (img.complete && img.naturalWidth) {
+                    setOrientation(img);
+                } else {
+                    img.addEventListener('load', () => setOrientation(img));
+                    img.addEventListener('error', () => {
+                        // keep default orientation if image fails
+                        const frame = img.closest('.map-frame');
+                        if (frame) frame.classList.add('orientation-landscape');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

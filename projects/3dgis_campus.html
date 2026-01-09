@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>3D Campus Models — Details</title>
+	<link rel="stylesheet" href="../Anshu Pallav - Enterprie GIS Solutions Architect_files/styles.css">
+	<link rel="stylesheet" href="../Anshu Pallav - Enterprie GIS Solutions Architect_files/leaflet.css">
+	<style>
+		.container{ max-width:1100px; margin:2rem auto; padding:1rem; }
+		.map-large{ height:420px; border-radius:8px; margin-bottom:1rem; }
+		.tool-list{ display:flex; gap:.5rem; flex-wrap:wrap; }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="../Anshu Pallav - Enterprie GIS Solutions Architect.html" class="btn">← Back to portfolio</a>
+		<h1>3D GIS College Campus Models</h1>
+		<p>Workflow for creating 3D campus models, LODs, CityEngine rules and web presentation options.</p>
+
+		<h3>2D building footprints</h3>
+		<div id="map-2d" class="map-large"></div>
+
+		<h3>3D preview (static/embedded)</h3>
+		<div id="map-3d" class="map-large"></div>
+
+		<h3>Tools used</h3>
+		<div class="tool-list">
+			<span class="tech-tag">ArcGIS Pro</span>
+			<span class="tech-tag">CityEngine</span>
+			<span class="tech-tag">ArcGIS Online / 3D Scene Viewer</span>
+			<span class="tech-tag">PyQGIS</span>
+			<span class="tech-tag">QGIS</span>
+		</div>
+	</div>
+
+	<script src="../Anshu Pallav - Enterprie GIS Solutions Architect_files/leaflet.js.download"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			try {
+				const base = (m)=> L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}').addTo(m);
+				const m1 = L.map('map-2d').setView([33.7838, -118.1141],16); base(m1); L.marker([33.7838,-118.1141]).addTo(m1).bindPopup('Campus center');
+				const m3 = L.map('map-3d').setView([33.7838, -118.1141],16); base(m3);
+				// optionally embed a 3D scene or screenshot in real project
+			} catch(e){}
+		});
+	</script>
+</body>
+</html>

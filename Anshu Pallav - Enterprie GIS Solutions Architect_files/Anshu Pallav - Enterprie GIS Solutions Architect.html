@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="origin-trial" content="A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malshan Navodya - GIS Solutions Architect</title>
+    <link rel="stylesheet" href="./Anshu Pallav - Enterprie GIS Solutions Architect_files/styles.css">
+    <link href="./Anshu Pallav - Enterprie GIS Solutions Architect_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./Anshu Pallav - Enterprie GIS Solutions Architect_files/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="./Anshu Pallav - Enterprie GIS Solutions Architect_files/leaflet.css">
+    <!-- Leaflet JS -->
+    <script type="text/javascript" async="" charset="utf-8" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/recaptcha__en_gb.js.download" crossorigin="anonymous" integrity="sha384-FKu83DwnGavG4fbF/Q5zrq5OXcSffeOyctmFCYFllQFltJI9sppsirkfzxaJD8vc"></script><script src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/leaflet.js.download"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+        const thankYouMessage = document.getElementById("thankYouMessage");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+
+            if (response.ok) {
+                form.reset();
+                thankYouMessage.style.display = "block";
+            } else {
+                alert("Oops! There was a problem submitting your form.");
+            }
+        });
+    });
+</script><script src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/api.js.download" async="" defer=""></script><script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const map = L.map('hero-map', {
+            zoomControl: false,
+            attributionControl: false,
+            dragging: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            tap: false,
+            touchZoom: false
+        }).setView([29.7604, -95.3698], 10); // Houston, TX
+
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16
+        }).addTo(map);
+    });
+</script><style>
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style></head>
+
+
+
+
+
+
+
+<body data-new-gr-c-s-check-loaded="14.1264.0" data-gr-ext-installed="">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Portfolio</h2>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects/Presentations</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div id="hero-map" class="leaflet-container leaflet-touch leaflet-fade-anim"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/240" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(489px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/241" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(745px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/240(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(489px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/241(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(745px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/240(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(489px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/241(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(745px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/239" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(233px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/242" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1001px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/239(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(233px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/242(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1001px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/239(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(233px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/242(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1001px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/240(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(489px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/241(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(745px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/240(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(489px, 900px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/241(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(745px, 900px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/239(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(233px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/242(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1001px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/238" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-23px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/243" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1257px, 388px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/239(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(233px, 900px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/242(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1001px, 900px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/238(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-23px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/243(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1257px, 132px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/238(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-23px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/243(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1257px, 644px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/238(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-23px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/243(3)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1257px, -124px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/238(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-23px, 900px, 0px); opacity: 1;"><img alt="" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/243(4)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1257px, 900px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(61625.8px, 108355px, 0px) scale(512);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"></div></div></div>
+    <section id="home" class="hero" style="position: relative;">
+        <div class="hero-content">
+            <div class="hero-text">
+
+                <h1>Malshan Navodya</h1>
+                <h2>GIS Analyst | Map Illustrator </h2>
+                <p>I am a GIS professional with extensive experience in geospatial data management, spatial analysis, and GIS project implementation. Over the years, I have contributed to designing and deploying scalable GIS solutions for diverse organizations, helping turn spatial data into actionable insights. Passionate about mapping, technology, and innovative geospatial solutions, I thrive in creating efficient, data-driven systems.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View My Work</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-circle">
+                    <img src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/profile.jpg" alt="ANshu Pallav Profile" class="profile-image">
+                </div>
+            </div>
+        </div>
+    <div class="particles" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none;"><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.60874s linear 0.379949s infinite normal none running float-particle; left: 80.2079%; top: 63.6009%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.20176s linear 0.159525s infinite normal none running float-particle; left: 4.35355%; top: 96.3132%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.50059s linear 1.4023s infinite normal none running float-particle; left: 91.3867%; top: 46.3648%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.13201s linear 1.78904s infinite normal none running float-particle; left: 45.5414%; top: 53.9873%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.59679s linear 0.925213s infinite normal none running float-particle; left: 94.355%; top: 34.9612%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.26794s linear 0.395363s infinite normal none running float-particle; left: 49.6441%; top: 33.624%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.08953s linear 0.357469s infinite normal none running float-particle; left: 19.8359%; top: 68.0016%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.08314s linear 0.990991s infinite normal none running float-particle; left: 5.22989%; top: 47.6091%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.44913s linear 1.43012s infinite normal none running float-particle; left: 76.2826%; top: 72.8788%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.47097s linear 0.99326s infinite normal none running float-particle; left: 43.3118%; top: 79.793%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.25862s linear 1.06231s infinite normal none running float-particle; left: 62.286%; top: 11.439%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.89174s linear 1.12942s infinite normal none running float-particle; left: 43.3122%; top: 41.7816%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.00408s linear 1.88312s infinite normal none running float-particle; left: 34.9303%; top: 95.7649%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.28214s linear 0.573188s infinite normal none running float-particle; left: 10.6722%; top: 47.9594%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.23543s linear 0.900348s infinite normal none running float-particle; left: 20.2887%; top: 20.6347%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.85902s linear 1.54626s infinite normal none running float-particle; left: 4.32116%; top: 86.6085%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.78165s linear 0.621463s infinite normal none running float-particle; left: 5.5905%; top: 38.7116%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.13481s linear 0.982164s infinite normal none running float-particle; left: 60.617%; top: 50.2269%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.7302s linear 0.923245s infinite normal none running float-particle; left: 70.1212%; top: 93.6928%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.68119s linear 1.05998s infinite normal none running float-particle; left: 19.2671%; top: 49.1731%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.26322s linear 1.98248s infinite normal none running float-particle; left: 48.294%; top: 39.5875%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.48574s linear 1.9475s infinite normal none running float-particle; left: 41.2781%; top: 18.5463%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.8162s linear 0.691718s infinite normal none running float-particle; left: 33.3045%; top: 37.116%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.80037s linear 0.412794s infinite normal none running float-particle; left: 58.6891%; top: 1.41493%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.31525s linear 0.911398s infinite normal none running float-particle; left: 8.6837%; top: 81.7292%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.60632s linear 0.109971s infinite normal none running float-particle; left: 16.2863%; top: 59.6858%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.48815s linear 0.250787s infinite normal none running float-particle; left: 49.0492%; top: 76.643%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.57359s linear 1.87842s infinite normal none running float-particle; left: 42.6674%; top: 56.1566%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.75429s linear 0.341346s infinite normal none running float-particle; left: 24.7361%; top: 65.2976%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.38405s linear 0.684131s infinite normal none running float-particle; left: 89.5618%; top: 28.5842%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.61309s linear 0.384201s infinite normal none running float-particle; left: 78.6983%; top: 4.4956%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.05754s linear 1.97034s infinite normal none running float-particle; left: 69.6913%; top: 62.9615%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.56765s linear 0.478807s infinite normal none running float-particle; left: 43.8199%; top: 58.9622%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.09923s linear 1.56105s infinite normal none running float-particle; left: 13.1975%; top: 79.6367%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.57708s linear 0.770437s infinite normal none running float-particle; left: 80.576%; top: 71.4812%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.02443s linear 1.69184s infinite normal none running float-particle; left: 34.7489%; top: 24.0621%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.50937s linear 0.457283s infinite normal none running float-particle; left: 38.557%; top: 0.349508%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.0727s linear 0.444507s infinite normal none running float-particle; left: 27.7349%; top: 72.6999%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.51731s linear 0.0452724s infinite normal none running float-particle; left: 82.3553%; top: 94.4662%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.09689s linear 1.48049s infinite normal none running float-particle; left: 76.9298%; top: 57.7521%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.40684s linear 0.429467s infinite normal none running float-particle; left: 12.9662%; top: 46.5296%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 4.17454s linear 0.429471s infinite normal none running float-particle; left: 67.8467%; top: 42.5807%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.0759s linear 1.11929s infinite normal none running float-particle; left: 49.0134%; top: 20.6164%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.98129s linear 0.868565s infinite normal none running float-particle; left: 79.3465%; top: 43.6387%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 3.55102s linear 0.513169s infinite normal none running float-particle; left: 32.2782%; top: 10.0474%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.54319s linear 1.68847s infinite normal none running float-particle; left: 45.6923%; top: 66.3959%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.35824s linear 1.49134s infinite normal none running float-particle; left: 30.8405%; top: 86.5343%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.41835s linear 0.98542s infinite normal none running float-particle; left: 17.1277%; top: 34.6746%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.38439s linear 1.78094s infinite normal none running float-particle; left: 71.3195%; top: 74.0727%;"></div><div style="position: absolute; width: 4px; height: 4px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; animation: 2.98603s linear 1.7728s infinite normal none running float-particle; left: 16.8448%; top: 56.9018%;"></div></div></section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I’m Malshan Navodya Karunarathna, a dedicated Geospatial Technology professional graduated with a BSc. (Hons) from the University of Sri Jayewardenepura. My foundation lies in utilizing advanced GIS and Remote Sensing technologies to solve real-world spatial challenges, focusing on data analysis, mapping, and project execution across public service and environmental sectors.</p>
+                    <p>Currently, I drive critical spatial analysis initiatives as a Research Assistant specializing in GIS at the Coconut Research Institute (CRI). My work bridges advanced Remote Sensing analysis with vital field-level resource management. I architect and maintain geospatial data workflows, automate the processing of satellite imagery for detailed land suitability modeling, and deliver high-impact visual outputs and decision-support systems crucial for coconut cultivation and environmental assessments.</p>
+                    <p>My core expertise lies in the Esri ArcGIS suite, where I have orchestrated implementations—from geospatial data management to GIS-based custom web application development. I am also well-versed in integrating cloud technologies to enhance performance, scalability, and cost-efficiency for enterprise-level GIS deployments.</p>
+                    <p>This expertise is backed by diverse practical experience, including contributing geospatial data to the Sri Lanka’s Climate Change and Development Report (CCDR) for the World Bank and successfully executing a GIS-based Light Pole problem complaint system. Through past roles at the Land Reform Commission and as a GIS Technician, I have refined my ability to manage large geodatabases, integrate real-world field data, and deliver detailed mapping inventories for national projects.</p>
+                    <p>This expertise extends into the freelance market, where I operate as a GIS Analyst on platforms like Upwork. This freelance work has sharpened my skills in project scoping, client communication, and delivering precise, customized geospatial solutions across varied industries, from boundary mapping to data visualization projects, all while adhering to strict deadlines and quality standards.</p>
+                    <p>Beyond technical delivery, my tenure as the President of the Youth Mapper Chapter - USJ (UN Mappers) demonstrates proven leadership, effective communication, and project management skills. I am committed to leveraging my comprehensive geospatial and analytical skills to secure challenging roles that drive data-informed decisions and contribute meaningfully to modern infrastructure and societal success.</p>
+                    <div class="about-stats">
+                        <div class="stat fade-in">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat fade-in">
+                            <h3>BSc</h3>
+                            <p>Geo-Spatial Technology</p>
+                        </div>
+                        <div class="stat fade-in">
+                            <h3>15+</h3>
+                            <p>Technologies Mastered</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Cloud, DevOps &amp; Automations</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Microsoft Azure</span>
+                        <span class="skill-tag">Google Cloud</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>WebGIS APIs</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">ArcGIS API for JavaScript</span>
+                        <span class="skill-tag">ArcGIS API for Python</span>
+                        <span class="skill-tag">Leaflet</span>
+                        <span class="skill-tag">MapBox</span>
+                        <span class="skill-tag">OpenLayers</span>
+                        
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>GIS Platforms and Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">ArcGIS Pro</span>
+                        <span class="skill-tag">ArcGIS Enterprise</span>
+                        <span class="skill-tag">Portal for ArcGIS</span>
+                        <span class="skill-tag">ArcGIS Server</span>
+                        <span class="skill-tag">Pix4D</span>
+                        <span class="skill-tag">QGIS</span>
+                        <span class="skill-tag">GeoServer</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Programming &amp; Development</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Java/JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Data Analysis &amp; Visualization</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">RStudio</span>
+                        <span class="skill-tag">Data Mining</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Database Systems</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects / Presentations</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Sustainable Tourism Web Map for the City of Long Beach using bikes: LB Green Travel</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/anspal/lbgreentravel" class="project-link" target="_blank" title="View Source on GitHub"><i class="fab fa-github"></i></a>
+
+                        </div>
+                    </div>
+                    <p>Developed an AWS-based interactive sustainable travel website using an open-source full-stack GIS enterprise architecture using free student subscription. </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">GeoServer</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">MapBox APIs</span>
+                        <a href="https://cla.csulb.edu/departments/geography/beachgis/wp-content/uploads/2019/04/cohort4_Pallav.pdf" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Project Poster</a>
+                        <a href="https://www.cpace.csulb.edu/news/article/msgisci-grad-is-designing-solutions-for-climate-change" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Blog Post</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>3D GIS College Campus Models</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/anspal/CSULB_PyQGIS_App" class="project-link" target="_blank" title="View Source on GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <p>Built interactive campus application using Python with PyQGIS and Qt APIs, and created 3D campus models using ArcGIS Online, 3D Scene Viewer, ArcGIS Pro, CityEngine, and QGIS..</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyQGIS</span>
+                        <span class="tech-tag">3D GIS Visualization</span>
+                        <span class="tech-tag">ArcGIS Online</span>
+                        <span class="tech-tag">ArcGIS Pro</span>
+                        <span class="tech-tag">ArcGIS City Engine</span>
+                        <span class="tech-tag">QGIS</span>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Road Impact Assessment on Coastal Land Use Areas Using Remote Sensing Data </h3>
+                    </div>
+                    <p>Project for GIS 606 Advanced Remote Sensing course shocasing the GIS modeling and analysis to figure out the for impacts of major upcoming roads in the city of Mumbai, India.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ArcGIS Pro</span>
+                        <span class="tech-tag">Sattelite Imagery</span>
+                        <span class="tech-tag">Digital Image Processing</span>
+                        <span class="tech-tag">Remote Sensing</span>
+                        <span class="tech-tag">Predictive Analytics</span>
+                        <a href="https://docs.google.com/document/d/1UpZVE33HcOrR3U_7PRbvYxm2Lr0TzqaO/edit?usp=sharing&amp;ouid=103545169536521371681&amp;rtpof=true&amp;sd=true" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Report</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Parallel Computing for Remote Sensing Data Processing</h3>
+                    </div>
+                    <p>Designed a parallel computing workflow for remote sensing data processing using GDAL, OpenMPI on the PARAM Yuva II Supercomputer.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Parallel Computing</span>
+                        <span class="tech-tag">GDAL</span>
+                        <span class="tech-tag">OpenMPI</span>
+                        <span class="tech-tag">PARAM Yuva II Supercomputer</span>
+                        <a href="https://ijcatr.com/archives/volume2/issue4/ijcatr02041007.pdf" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Paper Publication</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>College Prediction using Data Mining</h3>
+                    </div>
+                    <p>Created a college prediction website using data mining techniques with MySQL and PHP to assist students in analyzing prospective colleges under Mumbai University.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Data Mining</span>
+                        <span class="tech-tag">Predictive Analytics</span>
+                        <a href="https://docs.google.com/document/d/1UpZVE33HcOrR3U_7PRbvYxm2Lr0TzqaO/edit?usp=sharing&amp;ouid=103545169536521371681&amp;rtpof=true&amp;sd=true" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Report</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Student Showcase Presentation @ SCAG</h3>
+                    </div>
+                    <p>REGIONAL CONFERENCE &amp; GENERAL ASSEMBLY 2018 SOUTHERN CALIFORNIA AT A CROSSROADS On May 3, SCAG’s annual Regional Conference &amp; General Assembly featured a special Student Showcase session featuring GIS Story Maps selected through a competitive application process. This was an opportunity for me to share my project work with elected officials, planners, and regional leaders.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SCAG</span>
+                        <span class="tech-tag">Poster Presenation</span>
+                        <a href="https://scag.ca.gov/post/2018-regional-conference-general-assembly-0" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Story Map</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>GeoMentor Presentation @ Notre Dame High School</h3>
+                    </div>
+                    <p>As a GeoMentor, I had the opportunity to engage with students and presented a story map which covered many topics like Introduction to GIS, GIS Components, GIS Applications, Future Scope. </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">GeoMentor</span>
+                        <span class="tech-tag">High School Presenation</span>
+                        <a href="https://ess.maps.arcgis.com/apps/Cascade/index.html?appid=06c8cf3b29ee44eebd73f21132cec7dd" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Story Map</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Brown Bag Session @ Esri Support Services</h3>
+                    </div>
+                    <p>Conducted a brown bag on a topic titled ‘Exploring GeoEvent Server to Work with Live Mapping of COVID-19 Related Datasets’. The demo was created for live incident tracking and alerts of people count while one walks down a street of NYC.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">GeoEvent</span>
+                        <span class="tech-tag">ArcGIS Enterprise</span>
+                        <span class="tech-tag">SafeGraph Weekly Patterns Data</span>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Virtual Demo Session Presenter @ Esri User Confenence 2020 </h3>
+                    </div>
+                    <p>Virtually presented a technical demo session titled ‘ArcGIS Insights: Esri Support’s Perspective’.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ArcGIS Insights</span>
+                        <span class="tech-tag">ArcGIS Enterprise</span>
+                        <a href="https://community.esri.com/ccqpr47374/attachments/ccqpr47374/esri-technical-support-docs/2/1/UC2020-Tech-Supt-Sessions.pdf" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Tech Support Presenations</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Demo Session Presenter @ Esri User Confenence 2019 </h3>
+                    </div>
+                    <p>Presented an in-person demo session titled 'Troubleshoot Like an Esri Support Pro: Collector for ArcGIS' at the Esri User Conference 2019.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ArcGIS Insights</span>
+                        <span class="tech-tag">ArcGIS Enterprise</span>
+                        <a href="https://community.esri.com/ccqpr47374/attachments/ccqpr47374/esri-technical-support-docs/2/1/UC2020-Tech-Supt-Sessions.pdf" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Tech Support Presenations</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Enterprise Team Presentation @ Esri</h3>
+                    </div>
+                    <p>Presented a topic 'Working with ArcGIS Enterprise Raster Analytics' which covered topics of installation, deployment, configuration and usage of image services, raster analytics and deep learning..</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Raster Analytics</span>
+                        <a href="https://anshupallav.github.io/portfolio/" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">PDF</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Climathon Presenter @ CSULB</h3>
+                    </div>
+                    <p> Participated, created a test website showcasing active tranportation and presentation/pitched our idea to stakeholders from the City of Long Beach by highlighting my sustainable travel and tourism project.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CSULB</span>
+                        <span class="tech-tag">Active Transport</span>
+                        <a href="https://www.csulb.edu/institute-innovation-entrepreneurship/climathon-long-beach" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Climathon</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Presenter @ ERD Summit 2024</h3>
+                    </div>
+                    <p>Presenting at Energy Drone and Robotics Summit 2024 : Manage drones imagery with SiteScan for ArcGIS.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CSULB</span>
+                        <span class="tech-tag">Active Transport</span>
+                        <a href="https://events.american-tradeshow.com/edrs24/speaker/1242135/anshu-pallav" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">ERD Summit</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <h4>
+                            <a href="https://cri.gov.lk/" target="_blank" rel="noopener noreferrer">
+                                Coconut Research Institute,Lunuwila, Sri Lanka
+                            </a>
+                        </h4>
+                        <span class="timeline-date">September 2025 - Present</span>
+
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>GIS Analyst</h3>
+                        <h4>
+                            <a href="https://www.upwork.com/freelancers/~0186d4b5f6286dc862?mp_source=share" target="_blank" rel="noopener noreferrer">
+                                Upwork - Freelance GIS Analyst
+                            </a>
+                        </h4>
+                        <span class="timeline-date">June 2025- Present</span>
+
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>GIS Technician</h3>
+                        <h4>
+                            <a href="_" target="_blank" rel="noopener noreferrer">
+                                KATAK GIS, Colombo, Sri Lanka
+                            </a>
+                        </h4>
+                        <span class="timeline-date">January 2025 - June 2025</span>
+
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>GIS Analyst</h3>
+                        <h4>
+                            <a href="https://www.upwork.com/freelancers/~0186d4b5f6286dc862?mp_source=share" target="_blank" rel="noopener noreferrer">
+                                Upwork - Freelance GIS Analyst
+                            </a>
+                        </h4>
+                        <span class="timeline-date">Sept 2024 - December 2025</span>
+
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>GIS Project Assistant</h3>
+                        <h4>
+                            <a href="https://lrc.gov.lk/" target="_blank" rel="noopener noreferrer">
+                                Land Reform Commission, Colombo, Sri Lanka
+                            </a>
+                        </h4>
+                        <span class="timeline-date">Jun 2024 - September 2024</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education &amp; Certifications</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-header">
+                        <h3>
+                            <a href="https://fhss.sjp.ac.lk/geog/honours-degree-in-geo-spatial/" target="_blank" rel="noopener noreferrer">
+                                BSc in Geo-Spatial Technologies
+                            </a>
+                        </h3>
+                        <span class="education-date">December 2024</span>
+                    </div>
+                    <h4>University of Sri Jayewardenepura, Sri Lanka</h4>
+                    <p class="gpa">GPA: 3.19</p>
+                    <p>The Bachelor of Science in Geo-Spatial Technologies (BSc GST) is a comprehensive four-year undergraduate program designed to build strong foundational and applied skills for students entering the growing geospatial industry. The program provides a blend of theoretical knowledge and hands-on training in geographic information systems, remote sensing, cartography, and spatial analytics. Through a combination of technical coursework, field exercises, and project-based learning, students develop the competencies required to meet industry expectations and contribute effectively across various geospatial roles. This degree also emphasizes critical thinking, data interpretation, and communication skills, preparing graduates to confidently step into professional positions within the geospatial workforce.</p>
+
+
+                </div>
+                <div class="education-card">
+                    <div class="education-header">
+                        <h3>
+                            <a href="https://www.kea.lk/kea_web/index.phpn" target="_blank" rel="noopener noreferrer">
+                                Diploma Certificate in English
+                            </a>
+                        </h3>
+                        <span class="education-date">August 2021</span>
+                    </div>
+                    <h4>Kekirawa English Academynuradapura, Sri Lanka</h4>
+                    <p> he Diploma in English at Kekirawa English Academy is a comprehensive program designed to develop learners’ proficiency in English for academic, professional, and social purposes. The course covers advanced grammar, vocabulary, phonetics, communication skills, and writing techniques. It also emphasizes critical thinking, presentation skills, and cross-cultural communication, preparing students to use English effectively in real-world contexts. With interactive classroom sessions, practical assignments, and modern teaching methodologies, this diploma equips learners with confidence and fluency in all four language skills: listening, speaking, reading, and writing.</p>
+                </div>
+            </div>
+            <div class="certifications">
+                <h3>Certifications &amp; Awards</h3>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <i class="fas fa-award"></i>
+                        <a href="https://drive.google.com/file/d/1Iw8_UEJ2CVeg3AHubksPfhuVIiqSgDLX/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                            Degree Setificate of BSc in Geospatial Technologies.
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in touch</h3>
+                    <p>I'm always interested in new opportunities and collaborations. Let's discuss how we can work together!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                        <span> 📩   malshannavodya123@gmail.com</span>  
+                        </div>
+                        <div class="contact-item">
+                        <span> 📞   +94 70 243 1248 </span>
+                        </div>
+                        
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/malshan-navodya-karunarathna-627448233/" target="_blank" class="social-link"><img src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/linkdin.png" alt="LinkedIn" style="width: 38px; height: 38px;"></a>
+                        <a href="https://github.com/malshannavodya123-ux" target="_blank" class="social-link"><img src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/github.png" alt="GitHub" style="width: 38px; height: 38px;"></a>
+                        <a href="https://www.upwork.com/freelancers/~0186d4b5f6286dc862?mp_source=share" target="_blank" class="social-link"><img src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/Upwork.png" alt="GitHub" style="width: 38px; height: 38px;"></a>
+                    </div>
+                </div>
+
+
+                <form action="https://formspree.io/f/mvgnkznz" method="POST" class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required="">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required=""></textarea>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LdK9H0rAAAAADlAYGmPTMwS6xexgnRBBbIDD3Zy"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-i7xxztycbd5x" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/anchor.html"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/saved_resource(1).html"></iframe></div>
+                    <!-- Optional: Redirect after submission -->
+                    <!-- <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you.html"> -->
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+
+                    <!-- Success message -->
+                    <p id="thankYouMessage" style="display:none; color: green; margin-top: 1rem;">
+                        Thank you for contacting me! I will follow up soon.
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Malshan Navodya Karunarathana. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/script.js.download"></script>
+
+
+
+<button class="scroll-to-top" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; border: none; cursor: pointer; opacity: 0; transform: translateY(100px); transition: 0.3s; z-index: 1000; box-shadow: rgba(37, 99, 235, 0.3) 0px 4px 15px;"><i class="fas fa-arrow-up"></i></button><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility linear 0.3s, opacity 0.3s linear; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge expires in two minutes" name="c-i7xxztycbd5x" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./Anshu Pallav - Enterprie GIS Solutions Architect_files/bframe.html" style="width: 100%; height: 100%;"></iframe></div></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

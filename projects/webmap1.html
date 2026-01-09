@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Mapping Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .projects-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .project-card {
+            margin-bottom: 40px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .project-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .project-title h2 {
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .project-icon {
+            font-size: 2em;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+
+        .feature-icon {
+            color: #667eea;
+            font-size: 1.3em;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid #667eea;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .view-fullscreen {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .view-fullscreen:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .projects-section {
+                padding: 20px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .map-container {
+                height: 500px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗺️ Geospatial Analysis & Interactive Web Mapping Projects</h1>
+            
+        </header>
+
+        <div class="projects-section">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">
+                        <span class="project-icon">🌴</span>
+                        <h2>Coconut Palm Health Monitoring System</h2>
+                    </div>
+                    
+                </div>
+                <h3>📘 Project Description</h3>
+                <p class="project-description"> </p>
+                    <p class="spaced">The Coconut Palm Health Monitoring System is an advanced geospatial application designed to monitor and assess the health of coconut palm trees in large estates using Drone imagery and data analysis. This system processes high-resolution Drone images to evaluate the vegetation condition of coconut palms by calculating vegetation indices, allowing agricultural managers and researchers to detect stressed, under-performing, or unhealthy trees early. The system visualizes tree health on an interactive map dashboard, enabling users to make data-driven decisions for timely intervention, optimal resource allocation, and improved crop management and yield.
+                </p>
+
+                <p class="project-description"> </p>
+                <h3>🎯 Project Objectives</h3>
+                <p class="project-description"> </p>
+                    <p class="spaced">
+                        <p> </p>🛰️ Monitor coconut tree health in real time over a geographic area.</p>
+                        <p> </p>🔍 Identify early signs of stress or decline in vegetation health.</p>
+                        <p> </p>📊 Support data-driven agricultural decisions for care and treatment.</p>
+                        <p> </p>⚙️ Optimize resource allocation — such as fertilizer, irrigation, or manual care.</p>
+                        <p> </p>🌿 Increase overall crop yield and sustainability.</p>
+                </p>
+
+                <p class="project-description"> </p>
+                <h3>Tools & Technologies</h3>
+                <p class="project-description"> </p>
+
+                <p class="project-description"> </p>
+                <div class="project-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span>Drone imagess</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>Pix4D Mapper</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>ArcGIS pro</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>QGIS</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>NDVI Analysis</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>Leaflet</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>OpenLayers</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>Google Maps API</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>Mapbox GL JS</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"></span>
+                        <span>HTML / CSS / JavaScript / GeoJSON</span>
+                    </div>
+                    
+                </div>
+
+                <div class="map-container">
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="spinner"></div>
+                    </div>
+                    <iframe 
+                        src="https://cricoconut-cpu.github.io/coconut/" 
+                        id="mapFrame"
+                        title="Coconut Palm Health Monitoring Map"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <a href="https://cricoconut-cpu.github.io/coconut/" target="_blank" class="view-fullscreen">
+                    🔗 View Fullscreen Version
+                </a>
+            </div>
+
+            <!-- You can add more projects here in the future -->
+            
+        </div>
+
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        // Hide loading overlay when iframe is loaded
+        const mapFrame = document.getElementById('mapFrame');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        mapFrame.addEventListener('load', function() {
+            setTimeout(function() {
+                loadingOverlay.classList.add('hidden');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
